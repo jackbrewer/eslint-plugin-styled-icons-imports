@@ -1,4 +1,4 @@
-const noMultiIconImports = require("./rules/no-multi-icon-imports.cjs");
+const noMultiIconImports = require("./rules/no-multi-icon-imports.js");
 
 module.exports = {
   rules: {
