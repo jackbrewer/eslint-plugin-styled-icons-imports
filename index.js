@@ -1,14 +1,15 @@
-import noMultiIconImports from "./rules/no-multi-icon-imports.js";
+const noMultiIconImports = require("./rules/no-multi-icon-imports.cjs");
 
-export const rules = {
-  "no-multi-icon-imports": noMultiIconImports,
-};
-
-export const configs = {
-  recommended: {
-    plugins: ["boxicon-imports"],
-    rules: {
-      "boxicon-imports/no-multi-icon-imports": "error",
+module.exports = {
+  rules: {
+    "no-multi-icon-imports": noMultiIconImports,
+  },
+  configs: {
+    recommended: {
+      plugins: ["boxicon-imports"],
+      rules: {
+        "boxicon-imports/no-multi-icon-imports": "error",
+      },
     },
   },
 };
