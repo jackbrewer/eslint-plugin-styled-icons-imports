@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-boxicon-imports",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ensure icons are imported individually from @styled-icons/boxicons",
   "engines": {
     "node": ">=18"
