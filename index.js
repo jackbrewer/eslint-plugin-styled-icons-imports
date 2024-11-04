@@ -1,14 +1,14 @@
-const noMultiIconImports = require("./rules/no-multi-icon-imports.js");
+const noDirectIconImport = require("./rules/no-direct-icon-import.js");
 
 module.exports = {
   rules: {
-    "no-multi-icon-imports": noMultiIconImports,
+    "no-direct-icon-import": noDirectIconImport,
   },
   configs: {
     recommended: {
-      plugins: ["boxicon-imports"],
+      plugins: ["styled-icons-imports"],
       rules: {
-        "boxicon-imports/no-multi-icon-imports": "error",
+        "styled-icons-imports/no-direct-icon-import": "error",
       },
     },
   },

@@ -1,7 +1,7 @@
 {
-  "name": "eslint-plugin-boxicon-imports",
-  "version": "1.0.1",
-  "description": "Ensure icons are imported individually from @styled-icons/boxicons",
+  "name": "eslint-plugin-styled-icons-imports",
+  "version": "1.1.0",
+  "description": "Ensure icons are imported individually from @styled-icons/*",
   "engines": {
     "node": ">=18"
   },
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jackbrewer/eslint-plugin-icon-imports.git"
+    "url": "git+https://github.com/jackbrewer/eslint-plugin-styled-icons-imports.git"
   },
   "author": "Jack Brewer",
   "license": "ISC"

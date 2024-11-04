@@ -4,38 +4,33 @@ module.exports = {
     docs: {
       description: "Ensure icons are imported individually from @styled-icons",
       category: "Best Practices",
+      recommended: false,
     },
     schema: [], // no options
     messages: {
-      noMultiIconImport:
-        "Do not import multiple icons from '{{ packageName }}'. Import them individually instead.",
+      noDirectIconImport:
+        "Do not import icons directly from '{{ packageName }}'. Import them individually instead.",
     },
     fixable: "code", // This marks the rule as fixable
   },
   create(context) {
-    const allowedPackages = [
-      "@styled-icons/boxicons-regular",
-      "@styled-icons/boxicons-logos",
-      "@styled-icons/boxicons-solid",
-      "@styled-icons/fa-brands",
-      "@styled-icons/simple-icons",
-    ];
-
     return {
       ImportDeclaration(node) {
         const importSource = node.source.value;
 
+        // Check if the import is from any @styled-icons package
         if (
-          allowedPackages.includes(importSource) &&
-          node.specifiers.length > 1
+          importSource.startsWith("@styled-icons/") &&
+          node.specifiers.length > 0
         ) {
           context.report({
             node,
-            messageId: "noMultiIconImport",
+            messageId: "noDirectIconImport",
             data: {
               packageName: importSource,
             },
             fix(fixer) {
+              // Generate individual import statements for each specifier
               const individualImports = node.specifiers
                 .map((specifier) => {
                   return `import { ${specifier.local.name} } from '${importSource}/${specifier.local.name}';`;
