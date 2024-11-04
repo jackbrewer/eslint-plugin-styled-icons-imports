@@ -17,6 +17,8 @@ module.exports = {
       "@styled-icons/boxicons-regular",
       "@styled-icons/boxicons-logos",
       "@styled-icons/boxicons-solid",
+      "@styled-icons/fa-brands",
+      "@styled-icons/simple-icons",
     ];
 
     return {
