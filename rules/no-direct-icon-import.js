@@ -6,21 +6,22 @@ module.exports = {
       category: "Best Practices",
       recommended: false,
     },
-    schema: [], // no options
+    schema: [],
     messages: {
       noDirectIconImport:
         "Do not import icons directly from '{{ packageName }}'. Import them individually instead.",
     },
-    fixable: "code", // This marks the rule as fixable
+    fixable: "code",
   },
   create(context) {
     return {
       ImportDeclaration(node) {
         const importSource = node.source.value;
 
-        // Check if the import is from any @styled-icons package
+        // Check if the import is from @styled-icons and only has a base package path
         if (
           importSource.startsWith("@styled-icons/") &&
+          importSource.split("/").length === 2 && // base package only, no icon subpath
           node.specifiers.length > 0
         ) {
           context.report({
@@ -33,11 +34,17 @@ module.exports = {
               // Generate individual import statements for each specifier
               const individualImports = node.specifiers
                 .map((specifier) => {
-                  return `import { ${specifier.local.name} } from '${importSource}/${specifier.local.name}';`;
+                  const iconName = specifier.imported.name;
+                  const localName = specifier.local.name;
+                  const correctedSource = `${importSource}/${iconName}`;
+
+                  // Handle aliases correctly if the imported and local names differ
+                  return localName === iconName
+                    ? `import { ${iconName} } from '${correctedSource}';`
+                    : `import { ${iconName} as ${localName} } from '${correctedSource}';`;
                 })
                 .join("\n");
 
-              // Replace the full import statement with individual imports
               return fixer.replaceText(node, individualImports);
             },
           });
