@@ -1,18 +1,25 @@
 {
   "name": "eslint-plugin-styled-icons-imports",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Ensure icons are imported individually from @styled-icons/*",
   "engines": {
     "node": ">=18"
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jackbrewer/eslint-plugin-styled-icons-imports.git"
   },
   "author": "Jack Brewer",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.13.0",
+    "vitest": "^2.1.4"
+  },
+  "devDependencies": {
+    "eslint": "8.50"
+  }
 }
