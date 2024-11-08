@@ -2,9 +2,13 @@
 
 This ESLint plugin enforces individual icon imports from `@styled-icons` packages.
 
+Tested against ESLint 8.
+
 ## What it does
 
-Splits imports into standalone imports, and ensures each icon is imported individually.
+Splits imports into standalone imports, and ensures each icon is imported individually. This can aid with readability and sorting of imports. It also reduces the overhead for tree-shaking, as only the icons that are used will be referenced.
+
+It can autofix imports to the correct format.
 
 ```javascript
 // Incorrect usage
