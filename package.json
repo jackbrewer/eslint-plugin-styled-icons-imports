@@ -20,12 +20,10 @@
   ],
   "author": "Jack Brewer",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@typescript-eslint/utils": "^8.13.0",
     "eslint": "^8.50",
     "vitest": "^2.1.4"
-  },
-  "devDependencies": {
-    "eslint": "8.50"
   }
 }
