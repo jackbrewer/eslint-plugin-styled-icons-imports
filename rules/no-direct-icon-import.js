@@ -21,6 +21,7 @@ module.exports = {
         // Check if the import is from @styled-icons and only has a base package path
         if (
           importSource.startsWith("@styled-icons/") &&
+          importSource !== "@styled-icons/styled-icon" && // Exclude core imports
           importSource.split("/").length === 2 && // base package only, no icon subpath
           node.specifiers.length > 0
         ) {
