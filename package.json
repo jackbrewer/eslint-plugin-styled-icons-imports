@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-styled-icons-imports",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Ensure icons are imported individually from @styled-icons/*",
   "engines": {
     "node": ">=18"
