@@ -25,6 +25,15 @@ module.exports = {
           importSource.split("/").length === 2 && // base package only, no icon subpath
           node.specifiers.length > 0
         ) {
+          // Ignore namespace imports like `import * as icons from ...`
+          if (
+            node.specifiers.some(
+              (specifier) => specifier.type === "ImportNamespaceSpecifier"
+            )
+          ) {
+            return;
+          }
+
           context.report({
             node,
             messageId: "noDirectIconImport",
@@ -34,6 +43,7 @@ module.exports = {
             fix(fixer) {
               // Generate individual import statements for each specifier
               const individualImports = node.specifiers
+                .filter((specifier) => specifier.type === "ImportSpecifier") // Ignore namespace imports
                 .map((specifier) => {
                   const iconName = specifier.imported.name;
                   const localName = specifier.local.name;

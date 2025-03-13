@@ -16,6 +16,10 @@ describe("no-direct-icon-imports", () => {
         {
           code: `import { Label as LabelIcon } from '@styled-icons/boxicons-solid/Label';`,
         },
+        {
+          // Ensure namespace imports do not trigger errors – we should handle this case in a standalone rule
+          code: `import * as icons from '@styled-icons/boxicons-regular';`,
+        },
       ],
       invalid: [
         {
